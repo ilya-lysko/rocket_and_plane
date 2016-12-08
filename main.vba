@@ -114,12 +114,12 @@ Private Sub Process(vsam, k1, k2, xrock2, yrock2, xsam2, ysam2, pe, wsam, hsam, 
                
         If (yrock2 < 0) Then
             past1 = True ' Промах
-            MsgBox ("Ïðîìàõ!")
+            MsgBox ("Промах!")
         End If
         
         If ((xsam2 - xrock2) < hsam * 0.5) And ((ysam2 - yrock2) < wsam * 0.5) Then
             boom1 = True ' Попадание
-            MsgBox ("Ïîïàäàíèå!")
+            MsgBox ("Попадание!")
         End If
                
         If (boom1 = False) And (past1 = False) Then
@@ -127,12 +127,12 @@ Private Sub Process(vsam, k1, k2, xrock2, yrock2, xsam2, ysam2, pe, wsam, hsam, 
             
             ActiveChart.Shapes.AddConnector(msoConnectorStraight, xsam1, ysam1, xsam2, ysam2) _
                 .Select
-                'Selection.ShapeRange.Line.EndArrowheadStyle = msoArrowheadOpen ' "Ñòðåëî÷êè"
+                'Selection.ShapeRange.Line.EndArrowheadStyle = msoArrowheadOpen ' "Стрелочки"
                 
             ' Система управления ракеткой
             ActiveChart.Shapes.AddConnector(msoConnectorStraight, xrock1, yrock1, xrock2, yrock2) _
-                .Select ' âîçìîæíî ñòîèò çàïàðàìåòðèçèðîâàòü îòíîøåíèå ñêîðîñòåé ðàêåòêè è ñàìîëåòèêà
-                'Selection.ShapeRange.Line.EndArrowheadStyle = msoArrowheadOpen ' "Ñòðåëî÷êè"
+                .Select ' возможно стоит запараметризировать отношение скоростей ракетки и самолетика
+                'Selection.ShapeRange.Line.EndArrowheadStyle = msoArrowheadOpen ' "Стрелочки"
             Selection.ShapeRange.ShapeStyle = msoLineStylePreset3
         Else
             ActiveChart.Shapes.AddShape(msoShapeRectangle, xsam1 - vsam * pe, ysam1 - 0.5 * hsam, 20, 10). _
